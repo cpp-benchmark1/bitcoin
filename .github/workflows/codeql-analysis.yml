@@ -32,8 +32,9 @@ jobs:
     - if: matrix.build-mode == 'manual'
       shell: bash
       run: |
-        mkdir build && cd build
-        cmake ..
+        sudo apt-get install build-essential cmake pkg-config python3 libevent-dev libboost-dev
+        cmake -B build -DENABLE_WALLET=OFF
+        cmake --build build
     - name: Free disk space
       run: |
           sudo docker rmi $(docker image ls -aq) >/dev/null 2>&1 || true
