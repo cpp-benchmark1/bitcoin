@@ -9,7 +9,7 @@ on:
       languages:
         description: "Languages to analyze"
         required: true
-        default: "c_cpp"
+        default: "c-cpp"
 jobs:
   analyze:
     name: Analyze (${{ matrix.language }})
@@ -23,7 +23,7 @@ jobs:
       fail-fast: false
       matrix:
         include:
-        - language: c_cpp
+        - language: c-cpp
           build-mode: manual
     steps:
     - name: Checkout repository
