@@ -4,6 +4,12 @@ on:
     branches: [ "main" ]
   pull_request:
     branches: [ "main" ]
+  workflow_dispatch:
+    inputs:
+      languages:
+        description: "Languages to analyze"
+        required: true
+        default: "c_cpp"
 jobs:
   analyze:
     name: Analyze (${{ matrix.language }})
@@ -17,7 +23,7 @@ jobs:
       fail-fast: false
       matrix:
         include:
-        - language: c-cpp
+        - language: c_cpp
           build-mode: manual
     steps:
     - name: Checkout repository
